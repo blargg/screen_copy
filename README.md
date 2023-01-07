@@ -4,6 +4,15 @@ This lets you copy text from places on the screen you normally can't, like text 
 
 It runs it through tesseract OCR, so there will sometimes be mistakes, but it's better than nothing.
 
+# Try it out
+
+You can run the command right now with:
+```
+nix flake run github:blargg/screen_copy#screen_copy
+```
+
+When it finishes installing, you will be able to click and drag over a rectangle of your screen. You should then be able to paste the text you selected from your clipboard buffer (ctrl+v, usually).
+
 # Nixos install.
 
 Add this flake to your inputs.
