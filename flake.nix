@@ -10,5 +10,9 @@
       default = self.packages.x86_64-linux.screen_copy;
     };
 
+    overlays.default = final: prev: {
+      screen_copy = import ./pkgs/screen_copy.nix { pkgs = prev; };
+    };
+
   };
 }
