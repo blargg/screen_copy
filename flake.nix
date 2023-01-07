@@ -7,7 +7,6 @@
 
     packages.x86_64-linux = {
       screen_copy = import ./pkgs/screen_copy.nix { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
-      default = self.packages.x86_64-linux.screen_copy;
     };
 
     overlays.default = final: prev: {
