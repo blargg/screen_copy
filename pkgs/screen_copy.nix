@@ -8,13 +8,6 @@ stdenv.mkDerivation {
   name = "screen_copy";
   src = "";
 
-  # TODO is this needed?
-  buildInputs = [
-    xclip
-    tesseract
-    scrot
-  ];
-
   buildCommand = ''
     mkdir -p $out/bin
     echo '${script}' > $out/bin/screen_copy
