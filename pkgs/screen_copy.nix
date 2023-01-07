@@ -5,7 +5,7 @@ ${scrot}/bin/scrot -s - | ${tesseract}/bin/tesseract stdin stdout | ${xclip}/bin
 '';
 in
 stdenv.mkDerivation {
-  name = "screen-copy";
+  name = "screen_copy";
   src = "";
 
   # TODO is this needed?
