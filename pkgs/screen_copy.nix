@@ -1,16 +1,9 @@
 { pkgs }:
-with pkgs;
-let script = ''
-${scrot}/bin/scrot -s - | ${tesseract}/bin/tesseract stdin stdout | ${xclip}/bin/xclip -in -selection clipboard
-'';
-in
-stdenv.mkDerivation {
+pkgs.writeShellApplication {
   name = "screen_copy";
-  src = "";
+  runtimeInputs = with pkgs; [ scrot tesseract xclip ];
 
-  buildCommand = ''
-    mkdir -p $out/bin
-    echo '${script}' > $out/bin/screen_copy
-    chmod +rx $out/bin/screen_copy
+  text = ''
+  scrot -s - | tesseract stdin stdout | xclip -in -selection clipboard
   '';
 }
