@@ -4,7 +4,9 @@ This lets you copy text from places on the screen you normally can't, like text 
 
 It runs it through tesseract OCR, so there will sometimes be mistakes, but it's better than nothing.
 
-# Try it out
+This currently only supports x server, and will not work for wayland. Adding wayland would be a welcome addition.
+
+# Try it out (with nix flakes and x server)
 
 You can run the command right now with:
 ```
