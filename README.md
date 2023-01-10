@@ -10,7 +10,7 @@ This currently only supports x server, and will not work for wayland. Adding way
 
 You can run the command right now with:
 ```
-nix flake run github:blargg/screen_copy#screen_copy
+nix run github:blargg/screen_copy#screen_copy
 ```
 
 When it finishes installing, you will be able to click and drag over a rectangle of your screen. You should then be able to paste the text you selected from your clipboard buffer (ctrl+v, usually).
