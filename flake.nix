@@ -5,12 +5,20 @@
 
   outputs = { self, nixpkgs }: {
 
-    packages.x86_64-linux = {
-      screen_copy = import ./pkgs/screen_copy.nix { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
+    packages.x86_64-linux = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      callPackage = pkgs.callPackage;
+    in
+    {
+      screen_copy = callPackage ./pkgs/screen_copy.nix { };
     };
 
-    overlays.default = final: prev: {
-      screen_copy = import ./pkgs/screen_copy.nix { pkgs = prev; };
+    overlays.default = final: prev: 
+    let
+      callPackage = final.callPackage;
+    in
+    {
+      screen_copy = callPackage ./pkgs/screen_copy.nix { };
     };
 
   };

@@ -1,7 +1,7 @@
-{ pkgs }:
-pkgs.writeShellApplication {
+{ writeShellApplication, scrot, tesseract, xclip }:
+writeShellApplication {
   name = "screen_copy";
-  runtimeInputs = with pkgs; [ scrot tesseract xclip ];
+  runtimeInputs = [ scrot tesseract xclip ];
 
   text = ''
   scrot -s - | tesseract stdin stdout | xclip -in -selection clipboard
