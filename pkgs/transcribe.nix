@@ -1,9 +1,7 @@
 { writeShellApplication, openai-whisper, sox }:
 writeShellApplication {
-  name = "screen_copy";
+  name = "transcribe";
   runtimeInputs = [ openai-whisper sox ];
 
-  text = ''
-    echo TODO
-  '';
+  text = builtins.readFile ./transcribe.sh;
 }
