@@ -11,3 +11,4 @@ whisper "$SPEECH_FILE" --model tiny.en --device cuda -o "$OUTPUT_DIR" --output_f
 file_name=$(basename "${SPEECH_FILE%.*}")
 cat "$OUTPUT_DIR/$file_name.txt"
 rm "$SPEECH_FILE"
+rm -r "$OUTPUT_DIR"
