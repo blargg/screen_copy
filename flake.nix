@@ -13,8 +13,7 @@
       in
       {
         screen_copy = callPackage ./pkgs/screen_copy.nix { };
-        # TODO name collision?
-        transcribe = callPackage ./pkgs/transcribe.nix { };
+        whisper-transcribe = callPackage ./pkgs/transcribe.nix { };
       };
 
     overlays.default = final: prev:
@@ -23,7 +22,7 @@
       in
       {
         screen_copy = callPackage ./pkgs/screen_copy.nix { };
-        transcribe = callPackage ./pkgs/transcribe.nix { };
+        whisper-transcribe = callPackage ./pkgs/transcribe.nix { };
       };
 
   };
