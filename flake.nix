@@ -13,7 +13,7 @@
       in
       {
         screen_copy = callPackage ./pkgs/screen_copy.nix { };
-        whisper-transcribe = callPackage ./pkgs/transcribe.nix { };
+        whisper-transcribe = callPackage ./pkgs/whisper-transcribe.nix { }; # Updated import
       };
 
     overlays.default = final: prev:
@@ -22,7 +22,7 @@
       in
       {
         screen_copy = callPackage ./pkgs/screen_copy.nix { };
-        whisper-transcribe = callPackage ./pkgs/transcribe.nix { };
+        whisper-transcribe = callPackage ./pkgs/whisper-transcribe.nix { }; # Updated import
       };
 
   };

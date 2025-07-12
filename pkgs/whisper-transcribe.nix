@@ -3,5 +3,5 @@ writeShellApplication {
   name = "whisper-transcribe";
   runtimeInputs = [ openai-whisper sox ];
 
-  text = builtins.readFile ./transcribe.sh;
+  text = builtins.readFile ./whisper-transcribe.sh;
 }
