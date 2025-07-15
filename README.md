@@ -49,11 +49,3 @@ Then add the overlay to your configuration, and then use the package
 ```
 
 At this point, you can use screen_copy like any other nix package.
-
-# Roadmap
-
-I'm looking for better OCR, as long as it is just as easy to install and use.
-
-Add support for wayland. Currently only works for X.
-
-The long term goal is to merge this in to a larger repo, like nixpkgs.
