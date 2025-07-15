@@ -6,18 +6,30 @@ It runs it through tesseract OCR, so there will sometimes be mistakes, but it's 
 
 This currently only supports x server, and will not work for wayland. Adding wayland would be a welcome addition.
 
-# Try it out (with nix flakes and x server)
+# Try it out now
+
+## Screen Copy
 
 You can run the command right now with:
+
 ```
 nix run github:blargg/screen_copy#screen_copy
 ```
 
 When it finishes installing, you will be able to click and drag over a rectangle of your screen. You should then be able to paste the text you selected from your clipboard buffer (ctrl+v, usually).
 
+## Transcribing
+
+```
+nix run github:blargg/screen_copy#whisper-transcribe -- -m tiny.en -t
+```
+
+This will listen until you stop speaking, then type out the text. You can remove the `-t` to just echo to stdout, if that works better for you.
+
 # Nixos install.
 
 Add this flake to your inputs.
+
 ```
 inputs.screen_copy = {
   url = "github:blargg/screen_copy";
@@ -26,18 +38,20 @@ inputs.screen_copy = {
 ```
 
 Then add the overlay to your configuration, and then use the package
+
 ```
 {
     nixpkgs.overlays = [ screen_copy.overlays.default ];
 
     # Install the package to the system packages, or use it however you need.
-    environment.systemPackages = [ pkgs.screen_copy ];
+    environment.systemPackages = [ pkgs.screen_copy <and other packages ...>];
 }
 ```
 
 At this point, you can use screen_copy like any other nix package.
 
 # Roadmap
+
 I'm looking for better OCR, as long as it is just as easy to install and use.
 
 Add support for wayland. Currently only works for X.
