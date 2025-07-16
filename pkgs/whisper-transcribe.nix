@@ -39,22 +39,19 @@ writeShellApplication {
         esac
       done
 
-      # Record the audio
-      SPEECH_FILE=$(mktemp)
-      rec -v 2 -d -c 1 -t wav "$SPEECH_FILE" silence 1 0:00.01 0.1% 1 0:00.75 0.1%
+      # Record the audio and transcribe
+      # Piping allows whisper to load the model while it waits for the audio output to complete.
+      OUTPUT_DIR=$(mktemp -d)
+      rec -v 2 -d -c 1 -t wav - silence 1 0:00.01 0.1% 1 0:00.75 0.1% | whisper ''${MODEL:+--model "$MODEL"} ''${DEVICE:+--device "$DEVICE"} -o "$OUTPUT_DIR" --output_format txt - > /dev/null
 
       # Transcribe the audio
-      OUTPUT_DIR=$(mktemp -d)
-      whisper "$SPEECH_FILE" ''${MODEL:+--model "$MODEL"} ''${DEVICE:+--device "$DEVICE"} -o "$OUTPUT_DIR" --output_format txt > /dev/null
 
-      file_name=$(basename "''${SPEECH_FILE%.*}")
-      FILE_PATH="$OUTPUT_DIR/$file_name.txt"
+      FILE_PATH="$OUTPUT_DIR/-.txt"
       if [ "$TYPE_OUTPUT" = true ]; then
         xdotool type "$(cat "$FILE_PATH")"
       else
         cat "$FILE_PATH"
       fi
-      rm "$SPEECH_FILE"
       rm -r "$OUTPUT_DIR"
     '';
 }
