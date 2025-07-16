@@ -24,6 +24,9 @@ writeShellApplication {
       }
 
 
+      # Default values for flags.
+      TYPE_OUTPUT=false
+
       while getopts 'd:m:ht' flag; do
         case "''${flag}" in
           d) DEVICE="''${OPTARG}" ;;
