@@ -41,7 +41,7 @@ writeShellApplication {
 
       # Record the audio
       SPEECH_FILE=$(mktemp)
-      rec -v 2 -d -c 1 -t wav "$SPEECH_FILE" silence 1 1 0.1% 1 0:02 0.1%
+      rec -v 2 -d -c 1 -t wav "$SPEECH_FILE" silence 1 0:00.01 0.1% 1 0:00.75 0.1%
 
       # Transcribe the audio
       OUTPUT_DIR=$(mktemp -d)
